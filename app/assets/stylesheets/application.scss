@@ -11,3 +11,61 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+.banner {
+  position: relative;
+}
+
+#add-banner {
+  position:absolute;
+  top: 20px;
+  right: 20px;
+}
+
+#menu-banner {
+  position:absolute;
+  top: 20px;
+  left: 20px;
+}
+
+#menu-banner a:hover {
+  text-decoration: none;
+}
+
+.cocktail-card {
+  position: relative;
+}
+
+.cocktail-card:hover {
+  box-shadow: 0 0 25px rgb(100, 100, 100);
+  transition: 0.5s ease;
+}
+
+.cocktail-card:hover #btn-remove {
+  opacity: 1;
+  transition: 0.5s;
+}
+
+#btn-see {
+  position: absolute;
+  bottom: -5px;
+  right: 10px;
+}
+
+#btn-remove {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  opacity: 0;
+}
+
+.bg-subtle-light {
+  background-color:rgba(255,255,255,0.2);
+}
+
+.bg-subtle-light h3, h4 {
+  margin-bottom: 0;
+  color: white;
+}
+
+

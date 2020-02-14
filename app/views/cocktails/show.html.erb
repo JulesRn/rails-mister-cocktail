@@ -1,28 +1,27 @@
-<h1 class="text-center m-4"><%= @cocktail.name %></h1>
 
-<div class="container">
 
+<div class="banner" style="min-height:100vh ;background-image: linear-gradient(0deg, rgba(0,0,0,0.8925945378151261) 20%, rgba(0,0,0,0.5956757703081232) 100%), url(https://img-3.journaldesfemmes.fr/aE2sxV1Hvo3j_NfO-lJK9a2TMAE=/1240x/smart/f04d89a4cccd4b2ca800a9f7109e4dd0/ccmcms-jdf/10681503.jpg);box-shadow: 0px 5px 10px grey;">
+  <div class="container text-center">
+      <h2 id="menu-banner"><%= link_to "Mister Cocktail", cocktails_path, class: 'text-light' %></h2>
+      <h1 class="text-white" style="font-size: 64px"><%= @cocktail.name %></h1>
+      <p>Let's start mixing...</p>
+  </div>
+
+
+  <div class="container py-5 w-100">
     <div class="row justify-content-center" >
-        <div class="column col-5 card shadow m-2 p-4">
-            <h2><%= @cocktail.name %></h2>
-            <% @cocktail.doses.each do |dose| %>
-            <div class="card rounded shadow p-3 my-2">
-                <div class="px-3 row justify-content-between align-items-baseline">
-                  <h3><%= dose.ingredient.name %> </h3>
-                  <h4> <%= dose.description %></h4>
-                <%= link_to dose_path(@cocktail), method: :delete, class: 'btn btn-outline-danger w-25 justify-content-right' do %>
-                  <i class="fas fa-times"></i>
-                <% end %>
-                </div>
-            </div>
+      <% @cocktail.doses.each do |dose| %>
+          <div class="p-3 my-1 rounded row bg-subtle-light justify-content-between align-items-baseline w-100" style="">
+            <h3 style="min-width: 60%"><%= dose.ingredient.name %></h3>
+            <h4><%= dose.description %></h4>
+            <%= link_to dose_path(@cocktail), method: :delete, class: 'btn btn-outline-danger justify-content-right', style: "width: 10%" do %>
+              <i class="fas fa-times"></i>
             <% end %>
-            <%= link_to new_cocktail_dose_path(@cocktail),  class: 'btn btn-outline-primary mt-2' do %>
-            <i class="fas fa-plus"></i>
-            <% end %>
-        </div>
-        <div class="column col-5 card shadow m-2 p-4" style="box-sizing: content-box">
-            <img style="box-sizing: border-box; heigth:500px;" src="https://cdn-elle.ladmedia.fr/var/plain_site/storage/images/elle-a-table/recettes-de-cuisine/cocktail-vodka-tarte-tatin-3697376/88063187-1-fre-FR/Cocktail-Vodka-tarte-tatin.jpg" alt="">
-        </div>
+          </div>
+      <% end %>
+      <%= link_to new_cocktail_dose_path(@cocktail),  class: 'btn btn-outline-primary mt-2' do %>
+      <i class="fas fa-plus"></i> Add an ingredient
+      <% end %>
     </div>
+  </div>
 </div>
-

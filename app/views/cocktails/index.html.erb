@@ -1,32 +1,37 @@
 
 
 
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
-    <div class="container text-center">
-        <h1>What will get you wasted tonight?</h1>
-        <p>It's as easy as picking up a recipe!</p>
-    </div>
-</div>
-
-<div class="container text-center mt-5">
-
-<h1>Welcome to the bar</h1>
-    <div class="cards mt-5">
-        <% @cocktails.each do |cocktail| %>
-            <div class="card-category d-flex flex-column" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-              <h3><%= cocktail.name %></h3>
-              <div class="row">
-                <%= link_to "See More", cocktail_path(cocktail), class: 'btn btn-outline-primary' %>
-                <%= link_to cocktail_path(cocktail), method: :delete, class: 'btn btn-outline-danger ml-2' do %>
-                  <i class="fas fa-times"></i>
-                <% end %>
+<div class="banner" style="min-height:100vh ;background-image: linear-gradient(0deg, rgba(0,0,0,0.8925945378151261) 20%, rgba(0,0,0,0.5956757703081232) 100%), url(https://img-3.journaldesfemmes.fr/aE2sxV1Hvo3j_NfO-lJK9a2TMAE=/1240x/smart/f04d89a4cccd4b2ca800a9f7109e4dd0/ccmcms-jdf/10681503.jpg);box-shadow: 0px 5px 10px grey;">
+  <div class="container text-center">
+      <h2 id="menu-banner"><%= link_to "Mister Cocktail", cocktails_path, class: 'text-light' %></h2>
+      <h1 class="text-white" style="font-size: 64px">Welcome to the bar</h1>
+      <h2 class="text-white">What will get you wasted tonight?</h2>
+      <p>It's as easy as picking up a recipe!</p>
+      <h2 id="add-banner"><%= link_to "Add a cocktail", new_cocktail_path(@cocktail),  class: 'btn btn-outline-light'  %></h2>
+  </div>
+  <div class="container text-center py-5">
+      <div class="cards mt-5">
+          <% @cocktails.each do |cocktail| %>
+              <div class="card-category cocktail-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(cocktail.photo.key) %>)">
+                <h3><%= cocktail.name %></h3>
+                <div class="row">
+                  <p id="btn-see"><%= link_to "See More", cocktail_path(cocktail), class: 'btn btn-outline-light' %></p>
+                  <p id="btn-remove">
+                    <%= link_to cocktail_path(cocktail), method: :delete do %>
+                      <i class="fas fa-trash text-light"></i>
+                    <% end %>
+                  </p>
+                </div>
               </div>
-            </div>
-        <% end %>
-        <div class="card-category" style="background-color: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))">
-            <%= link_to new_cocktail_path(@cocktail) do %>
-                <h3><i class="fas fa-plus"></i></h3>
-            <% end %>
-        </div>
-    </div>
+          <% end %>
+          <div class="card-category cocktail-card" style="background-color: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))">
+              <%= link_to new_cocktail_path(@cocktail) do %>
+                  <h3><i class="fas fa-plus text-light"></i></h3>
+              <% end %>
+          </div>
+      </div>
+  </div>
 </div>
+
+
+
